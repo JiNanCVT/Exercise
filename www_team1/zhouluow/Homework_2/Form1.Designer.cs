@@ -1,6 +1,6 @@
 ﻿namespace Homework_2
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         /// 必需的设计器变量。
@@ -29,15 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Txt_Name = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Btn_Ok = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.listView1 = new System.Windows.Forms.ListView();
+            this.Lsv_students = new System.Windows.Forms.ListView();
             this.姓名 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.成绩 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.Cmb_f = new System.Windows.Forms.ComboBox();
             this.button4 = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.button5 = new System.Windows.Forms.Button();
@@ -47,13 +47,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
-            // textBox1
+            // Txt_Name
             // 
-            this.textBox1.Location = new System.Drawing.Point(90, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Txt_Name.Location = new System.Drawing.Point(90, 37);
+            this.Txt_Name.Name = "Txt_Name";
+            this.Txt_Name.Size = new System.Drawing.Size(100, 21);
+            this.Txt_Name.TabIndex = 0;
+            this.Txt_Name.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // textBox2
             // 
@@ -63,15 +63,15 @@
             this.textBox2.TabIndex = 1;
             this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
-            // button1
+            // Btn_Ok
             // 
-            this.button1.Location = new System.Drawing.Point(115, 128);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "确定输入";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Btn_Ok.Location = new System.Drawing.Point(115, 128);
+            this.Btn_Ok.Name = "Btn_Ok";
+            this.Btn_Ok.Size = new System.Drawing.Size(75, 23);
+            this.Btn_Ok.TabIndex = 2;
+            this.Btn_Ok.Text = "确定输入";
+            this.Btn_Ok.UseVisualStyleBackColor = true;
+            this.Btn_Ok.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
@@ -91,18 +91,18 @@
             this.label2.TabIndex = 5;
             this.label2.Text = "学生成绩：";
             // 
-            // listView1
+            // Lsv_students
             // 
-            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.Lsv_students.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.姓名,
             this.成绩});
-            this.listView1.Location = new System.Drawing.Point(231, 24);
-            this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(204, 195);
-            this.listView1.TabIndex = 10;
-            this.listView1.UseCompatibleStateImageBehavior = false;
-            this.listView1.View = System.Windows.Forms.View.Details;
-            this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.Lsv_students.Location = new System.Drawing.Point(231, 24);
+            this.Lsv_students.Name = "Lsv_students";
+            this.Lsv_students.Size = new System.Drawing.Size(204, 195);
+            this.Lsv_students.TabIndex = 10;
+            this.Lsv_students.UseCompatibleStateImageBehavior = false;
+            this.Lsv_students.View = System.Windows.Forms.View.Details;
+            this.Lsv_students.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
             // 
             // 姓名
             // 
@@ -114,18 +114,18 @@
             this.成绩.Text = "成绩";
             this.成绩.Width = 100;
             // 
-            // comboBox1
+            // Cmb_f
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.Cmb_f.FormattingEnabled = true;
+            this.Cmb_f.Items.AddRange(new object[] {
             "按成绩排序",
             "按姓名排序",
             "平均值"});
-            this.comboBox1.Location = new System.Drawing.Point(90, 166);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 20);
-            this.comboBox1.TabIndex = 11;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.Cmb_f.Location = new System.Drawing.Point(90, 166);
+            this.Cmb_f.Name = "Cmb_f";
+            this.Cmb_f.Size = new System.Drawing.Size(100, 20);
+            this.Cmb_f.TabIndex = 11;
+            this.Cmb_f.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button4
             // 
@@ -180,7 +180,7 @@
             this.studentBindingSource.DataSource = typeof(Homework_2.Student);
             this.studentBindingSource.CurrentChanged += new System.EventHandler(this.studentBindingSource_CurrentChanged);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -190,16 +190,16 @@
             this.Controls.Add(this.button5);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.button4);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.listView1);
+            this.Controls.Add(this.Cmb_f);
+            this.Controls.Add(this.Lsv_students);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Btn_Ok);
             this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Txt_Name);
             this.MaximizeBox = false;
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Name = "MainForm";
+            this.Text = "学生成绩";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.studentBindingSource)).EndInit();
             this.ResumeLayout(false);
@@ -209,16 +209,16 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Txt_Name;
         private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Btn_Ok;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.BindingSource studentBindingSource;
         private System.Windows.Forms.ColumnHeader 姓名;
         private System.Windows.Forms.ColumnHeader 成绩;
-        public System.Windows.Forms.ListView listView1;
-        private System.Windows.Forms.ComboBox comboBox1;
+        public System.Windows.Forms.ListView Lsv_students;
+        private System.Windows.Forms.ComboBox Cmb_f;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Button button5;

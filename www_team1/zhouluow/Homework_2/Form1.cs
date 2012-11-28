@@ -12,31 +12,21 @@ using System.Diagnostics;
 
 namespace Homework_2
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        static Form1 form1 = new Form1();
-        List<Student> list = new List<Student>();
-        public Form1()
+        //static Form1 form1 = new Form1();
+        List<Student> _students = new List<Student>();
+        public MainForm()
         {
 
 
             InitializeComponent();
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         public void button1_Click(object sender, EventArgs e)
         {
             //List<Student> list = new List<Student>();
-            if (textBox1.Text.Length==0)
+            if (Txt_Name.Text.Length==0)
             {
                 MessageBox.Show("请输入学生姓名");
                 return;
@@ -54,9 +44,9 @@ namespace Homework_2
             else
             {
                 Student s = new Student();
-                s.name = textBox1.Text;
+                s.name = Txt_Name.Text;
                 s.score = float.Parse(textBox2.Text);
-                list.Add(s);
+                _students.Add(s);
                 //form1.textBox1.Clear(); 
                 //form1.textBox2.Clear();
             }
@@ -65,116 +55,72 @@ namespace Homework_2
             {
                 MessageBox.Show("请输入学生成绩");
             }
-            textBox1.Clear ();
+            Txt_Name.Clear ();
             textBox2.Clear();
-            comboBox1.SelectedIndex = 0;
+            Cmb_f.SelectedIndex = 0;
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-          
-        }
+        
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
+       
 
-        }
+        
 
-        private void richTextBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void studentBindingSource_CurrentChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var list1 = list.OrderBy(f => f.score);
+            var list1 = _students.OrderBy(f => f.score);
             //}
             //else
             //{
-            var list2 = list.OrderBy(f => f.name);
+            var list2 = _students.OrderBy(f => f.name);
             //}
-            listView1.Items.Clear();
+            Lsv_students.Items.Clear();
             string pp = string.Empty;
-            if (comboBox1.SelectedItem.ToString().Equals("按成绩排序"))
+            if (Cmb_f.SelectedItem.ToString().Equals("按成绩排序"))
             {
                 foreach (Student s in list1)
                 {
                     string stuNum = s.score.ToString();
                     ListViewItem item = new ListViewItem(new string[] { s.Name, stuNum });
-                    listView1.Items.Add(item);
+                    Lsv_students.Items.Add(item);
                 }
 
             }
-            else
-                if (comboBox1.SelectedItem.ToString().Equals("按姓名排序"))
+            else if (Cmb_f.SelectedItem.ToString().Equals("按姓名排序"))
+            {
+                foreach (Student s in list2)
                 {
-                    foreach (Student s in list2)
-                    {
-                        string stuNum = s.score.ToString();
-                        ListViewItem item = new ListViewItem(new string[] { s.Name, stuNum });
-                        listView1.Items.Add(item);
-                    }
+                    string stuNum = s.score.ToString();
+                    ListViewItem item = new ListViewItem(new string[] { s.Name, stuNum });
+                    Lsv_students.Items.Add(item);
                 }
-                else
-                    if (comboBox1.SelectedItem.ToString().Equals("平均值"))
-                    {
-                        foreach (Student s in list)
-                        {
-                            string stuNum = s.score.ToString();
-                            ListViewItem item = new ListViewItem(new string[] { s.Name, stuNum });
-                            listView1.Items.Add(item);
-                        }
-                        int n = 0;
-                        float sum = 0;
-                        foreach (Student s in list)
-                        {
+            }
+            else if (Cmb_f.SelectedItem.ToString().Equals("平均值"))
+            {
+                foreach (Student s in _students)
+                {
+                    string stuNum = s.score.ToString();
+                    ListViewItem item = new ListViewItem(new string[] { s.Name, stuNum });
+                    Lsv_students.Items.Add(item);
+                }
+                int n = 0;
+                float sum = 0;
+                foreach (Student s in _students)
+                {
 
-                            sum += s.score;
-                            n++;
-                        }
-                        float pj = sum / n;
-                        string p = pj.ToString();
-                        MessageBox.Show("平均值： " + p);
-                    }
-                    else
-                        if (comboBox1.SelectedItem.ToString().Equals(pp))
-                            MessageBox.Show("请选择功能");
+                    sum += s.score;
+                    n++;
+                }
+                float pj = sum / n;
+                string p = pj.ToString();
+                MessageBox.Show("平均值： " + p);
+            }
+            else if (Cmb_f.SelectedItem.ToString().Equals(pp))
+                MessageBox.Show("请选择功能");
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
@@ -216,11 +162,11 @@ namespace Homework_2
 
             //using (StreamWriter swStream = new StreamWriter(stFilePath))
             //{
-            for (int i = 0; i < listView1.Items.Count; i++)
+            for (int i = 0; i < Lsv_students.Items.Count; i++)
             {
-                for (int j = 0; j < listView1.Items[i].SubItems.Count; j++)
+                for (int j = 0; j < Lsv_students.Items[i].SubItems.Count; j++)
                 {
-                    string _strTemp = listView1.Items[i].SubItems[j].Text;
+                    string _strTemp = Lsv_students.Items[i].SubItems[j].Text;
                     swStream.Write(_strTemp);
 
                     swStream.Write("\t\t");
@@ -234,19 +180,11 @@ namespace Homework_2
             Process.Start("notepad.exe", stFilePath);
             }
    
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
 
         private void button5_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }

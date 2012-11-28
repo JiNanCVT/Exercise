@@ -30,8 +30,8 @@ namespace Homework_2
         }
         public Student()
         {
-            this.name = name;
-            this.score = score;
+            //this.name = name;
+            //this.score = score;
         }
     }
 }
