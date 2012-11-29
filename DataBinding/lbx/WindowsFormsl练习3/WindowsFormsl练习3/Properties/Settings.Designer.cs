@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Homework_2.Properties
+namespace WindowsFormsl练习3.Properties
 {
 
 
