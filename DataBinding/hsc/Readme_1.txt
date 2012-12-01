@@ -1,1 +1,0 @@
-The "Province_" is the exercise about choosing provinces and cities.
