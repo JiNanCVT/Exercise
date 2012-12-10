@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data;
 using System.Data.SqlClient;
 using System.Collections.ObjectModel;
 
@@ -52,10 +53,10 @@ namespace CalligraphySample.DataHelper
         private static void Update(Calligraphyer c)
         {
             var cnn = DataHelper.CreateConnection();
-            string sql = @"UPDATE T_Calligrapher SET Description = @Description WHERE ID = @ID";
+            string sql = @"UPDATE T_Calligrapher SET Description = @Description WHERE ID = @ID UPDATE T_Calligrapher SET Name=@Name WHERE ID = @ID";
             SqlCommand cmmd = new SqlCommand(sql, cnn);
             cmmd.Parameters.Add(new SqlParameter("ID", c.Id));
-            //cmmd.Parameters.Add(new SqlParameter("Name",c.Name));
+            cmmd.Parameters.Add(new SqlParameter("Name", c.Name));
             cmmd.Parameters.Add(new SqlParameter("Description", c.Description));
             cnn.Open();
             cmmd.ExecuteNonQuery();
@@ -88,7 +89,7 @@ namespace CalligraphySample.DataHelper
         }
 
         public static void DeleteAll(ObservableCollection<Calligraphyer> calligraphyers)
-        {
+        {            
             var cnn = DataHelper.CreateConnection();
             string sql = @"DELETE FROM T_Calligrapher";
             SqlCommand cmmd = new SqlCommand(sql, cnn);
@@ -96,5 +97,11 @@ namespace CalligraphySample.DataHelper
             cmmd.ExecuteNonQuery();
             cnn.Close();
         }
+
+        public static void DeleteOne(ObservableCollection<Calligraphyer> calligraphyers,int count)
+        {
+            Delete(calligraphyers[count]);
+        }
+        
     }
 }

@@ -56,5 +56,11 @@ namespace CalligraphySample.ViewModel
             CalligrapherDataHelper.DeleteAll((ObservableCollection<Calligraphyer>)_viewSource.Source);
             _viewSource.Source = CalligrapherDataHelper.Load();
         }
+        public void Delete(int count)
+        {
+           
+            CalligrapherDataHelper.DeleteOne((ObservableCollection<Calligraphyer>)_viewSource.Source,count);
+            _viewSource.Source = CalligrapherDataHelper.Load();
+        }
     }
 }

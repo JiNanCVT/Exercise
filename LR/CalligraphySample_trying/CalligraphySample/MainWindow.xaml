@@ -16,11 +16,13 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Add" Grid.Row="0" Grid.ColumnSpan="2" Width="50" HorizontalAlignment="Left" Name="Btn_Add" Click="Btn_Add_Click"/>
-        <Button Content="Save" Grid.Row="0" Margin="68,0,174,0" Click="But_Save_Click"/>
-        <Button Content="Clear" Grid.Row="0" Margin="144,0,100,0" Click="But_Clear_Click"  />
+        <Button Content="Save" Grid.Row="0" Margin="55,0,187,0" Click="But_Save_Click"/>
+        <Button Content="Clear" Grid.Row="0" Margin="118,0,126,0" Click="But_Clear_Click"  />
         <ListBox Name="lbx" Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" DisplayMemberPath="Name" >
             
         </ListBox>
         <TextBox  Grid.Column="1" Grid.Row="1" Text="{Binding Path=Description}"/>
+        <Button Content="Delete" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="52" Height="40" Click="Btn_Delete_Click"/>
+        <Button Content="Rename" HorizontalAlignment="Left" Margin="236,0,0,0" VerticalAlignment="Top" Width="54" Height="40" Click="Btn_Rename_Click" Background="#FFCF4B4B"/>
     </Grid>
 </Window>

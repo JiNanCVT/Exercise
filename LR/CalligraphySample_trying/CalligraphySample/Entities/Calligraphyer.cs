@@ -53,7 +53,7 @@ namespace CalligraphySample.Entities
         public Calligraphyer()
         {
             //_id = Guid.NewGuid();
-            Status = Statuses.New;
+            //Status = Statuses.New;
         }
 
         public Calligraphyer(Guid id, string name, string description)
