@@ -1,0 +1,29 @@
+﻿<Window x:Class="CalligraphySample.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm ="clr-namespace:CalligraphySample.ViewModel"
+        Title="书法家" Height="350" Width="525">
+    <Window.Resources>
+        <vm:CalligrapherViewModel x:Key="cvm"/>
+        <DataTemplate x:Key="ListBoxTemplate">
+            <TextBox Text="{Binding Name}" Width="271" Height="20"/>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid DataContext="{Binding Source={StaticResource cvm}, Path=ViewSource}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width=" 300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button Content="Add" Grid.Row="0" Grid.ColumnSpan="2" Width="50" HorizontalAlignment="Left" Name="Btn_Add" Click="Btn_Add_Click"/>
+        <Button Content="Save" Grid.Row="0" Margin="68,0,174,0" Click="Button_Click_1"/>
+        <Button Content="Delete" Grid.Row="0" Margin="144,0,100,0" Click="Btn_Delete_Click" />
+        <ListBox Name="lbx_delete" Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" ItemTemplate="{StaticResource ListBoxTemplate}" >
+            
+        </ListBox>
+        <TextBox  Name="tbx_des" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Description}"/>
+    </Grid>
+</Window>
