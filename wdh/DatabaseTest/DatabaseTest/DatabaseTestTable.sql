@@ -1,0 +1,6 @@
+﻿CREATE TABLE [dbo].[Table]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY, 
+    [Name] NCHAR(10) NOT NULL, 
+    [Describetion] VARCHAR(500) NOT NULL
+)

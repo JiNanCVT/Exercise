@@ -16,13 +16,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Add" Grid.Row="0" Grid.ColumnSpan="2" Width="50" HorizontalAlignment="Left" Name="Btn_Add" Click="Btn_Add_Click"/>
-        <Button Content="Save" Grid.Row="0" Margin="55,0,187,0" Click="But_Save_Click"/>
-        <Button Content="Clear" Grid.Row="0" Margin="118,0,126,0" Click="But_Clear_Click"  />
-        <ListBox Name="lbx" Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" DisplayMemberPath="Name" >
+        <Button Content="Delete" Grid.Row="0" Width="50 " Name="Btn_Delete" Click="Btn_Delete_Click" RenderTransformOrigin="1.98,0.407" Margin="76,0,174,0"/>
+        <Button Content="Save" Grid.Row="0" Width="50"  Name="Btn_Save" Click="Btn_Save_Click" RenderTransformOrigin="1.98,0.407" Margin="152,0,98,0" Height="40" VerticalAlignment="Top"/>
+        <ListBox Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" DisplayMemberPath="Name">
             
         </ListBox>
-        <TextBox  Grid.Column="1" Grid.Row="1" Text="{Binding Path=Description}"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="52" Height="40" Click="Btn_Delete_Click"/>
-        <Button Content="Rename" HorizontalAlignment="Left" Margin="236,0,0,0" VerticalAlignment="Top" Width="54" Height="40" Click="Btn_Rename_Click" Background="#FFCF4B4B"/>
+        <TextBox x:Name="Text"  Grid.Column="1" Grid.Row="1" Text="{Binding Path=Description}" TextWrapping="Wrap"/>
     </Grid>
 </Window>

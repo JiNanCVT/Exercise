@@ -6,20 +6,14 @@ using System.Threading.Tasks;
 
 namespace CalligraphySample.Entities
 {
-   
-
     public class Calligraphyer:EntityBase
     {
         private Guid _id;
-        
+
         public Guid Id
         {
             get { return _id; }
-            set 
-            {
-                _id = value;
-                this.Status = Statuses.New;                       
-            }
+            set { _id = value; }
         }
         private string _name;
 
@@ -52,8 +46,8 @@ namespace CalligraphySample.Entities
 
         public Calligraphyer()
         {
-            //_id = Guid.NewGuid();
-            //Status = Statuses.New;
+            _id = Guid.NewGuid();
+            Status = Statuses.New;
         }
 
         public Calligraphyer(Guid id, string name, string description)

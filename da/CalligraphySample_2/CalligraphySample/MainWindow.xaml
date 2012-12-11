@@ -5,6 +5,9 @@
         Title="书法家" Height="350" Width="525">
     <Window.Resources>
         <vm:CalligrapherViewModel x:Key="cvm"/>
+        <DataTemplate x:Key="ListBoxTemplate">
+            <TextBox Text="{Binding Name}" Width="271" Height="20"/>
+        </DataTemplate>
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource cvm}, Path=ViewSource}">
         <Grid.RowDefinitions>
@@ -16,13 +19,11 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
         <Button Content="Add" Grid.Row="0" Grid.ColumnSpan="2" Width="50" HorizontalAlignment="Left" Name="Btn_Add" Click="Btn_Add_Click"/>
-        <Button Content="Save" Grid.Row="0" Margin="55,0,187,0" Click="But_Save_Click"/>
-        <Button Content="Clear" Grid.Row="0" Margin="118,0,126,0" Click="But_Clear_Click"  />
-        <ListBox Name="lbx" Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" DisplayMemberPath="Name" >
+        <Button Content="Save" Grid.Row="0" Margin="68,0,174,0" Click="Button_Click_1"/>
+        <Button Content="Delete" Grid.Row="0" Margin="144,0,100,0" Click="Btn_Delete_Click" />
+        <ListBox Name="lbx_delete" Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" ItemTemplate="{StaticResource ListBoxTemplate}" >
             
         </ListBox>
-        <TextBox  Grid.Column="1" Grid.Row="1" Text="{Binding Path=Description}"/>
-        <Button Content="Delete" HorizontalAlignment="Left" Margin="179,0,0,0" VerticalAlignment="Top" Width="52" Height="40" Click="Btn_Delete_Click"/>
-        <Button Content="Rename" HorizontalAlignment="Left" Margin="236,0,0,0" VerticalAlignment="Top" Width="54" Height="40" Click="Btn_Rename_Click" Background="#FFCF4B4B"/>
+        <TextBox  Name="tbx_des" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Description}"/>
     </Grid>
 </Window>

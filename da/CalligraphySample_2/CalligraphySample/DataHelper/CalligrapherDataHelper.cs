@@ -3,7 +3,6 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using System.Data;
 using System.Data.SqlClient;
 using System.Collections.ObjectModel;
 
@@ -33,10 +32,11 @@ namespace CalligraphySample.DataHelper
         {
             foreach (var c in calligraphyers)
             {
-                //if (c.Name.ToString() == null)
-                //{
-                //    Delete(c);
-                //}
+                if (c.Description.ToString().Trim().Equals("delete"))
+                {
+                    c.Status = EntityBase.Statuses.Delete;
+                }
+                
                 if (c.Status == EntityBase.Statuses.New)
                 {
                     Insert(c);
@@ -47,13 +47,18 @@ namespace CalligraphySample.DataHelper
                     Update(c);
                     c.Status = EntityBase.Statuses.Updated;
                 }
+                else if (c.Status == EntityBase.Statuses.Delete)
+                {
+                    Delete(c);
+                    c.Status = EntityBase.Statuses.Updated;
+                }
             }
         }
 
         private static void Update(Calligraphyer c)
         {
             var cnn = DataHelper.CreateConnection();
-            string sql = @"UPDATE T_Calligrapher SET Description = @Description WHERE ID = @ID UPDATE T_Calligrapher SET Name=@Name WHERE ID = @ID";
+            string sql = @"UPDATE T_Calligrapher SET Description = @Description ,Name = @Name WHERE ID = @ID";
             SqlCommand cmmd = new SqlCommand(sql, cnn);
             cmmd.Parameters.Add(new SqlParameter("ID", c.Id));
             cmmd.Parameters.Add(new SqlParameter("Name", c.Name));
@@ -80,28 +85,12 @@ namespace CalligraphySample.DataHelper
         public static void Delete(Calligraphyer c)
         {
             var cnn = DataHelper.CreateConnection();
-            string sql = @"DELETE FROM T_Calligrapher WHERE ID=@ID";
+            string sql = @"DELETE FROM T_Calligrapher WHERE ID = @ID";
             SqlCommand cmmd = new SqlCommand(sql, cnn);
             cmmd.Parameters.Add(new SqlParameter("ID", c.Id));
             cnn.Open();
             cmmd.ExecuteNonQuery();
             cnn.Close();
         }
-
-        public static void DeleteAll(ObservableCollection<Calligraphyer> calligraphyers)
-        {            
-            var cnn = DataHelper.CreateConnection();
-            string sql = @"DELETE FROM T_Calligrapher";
-            SqlCommand cmmd = new SqlCommand(sql, cnn);
-            cnn.Open();
-            cmmd.ExecuteNonQuery();
-            cnn.Close();
-        }
-
-        public static void DeleteOne(ObservableCollection<Calligraphyer> calligraphyers,int count)
-        {
-            Delete(calligraphyers[count]);
-        }
-        
     }
 }

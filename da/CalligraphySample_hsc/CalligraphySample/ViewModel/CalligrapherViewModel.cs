@@ -10,7 +10,6 @@ using CalligraphySample.Entities;
 
 namespace CalligraphySample.ViewModel
 {
-    
     public class CalligrapherViewModel
     {
         private CollectionViewSource _viewSource;
@@ -41,26 +40,20 @@ namespace CalligraphySample.ViewModel
         {
             Calligraphyer calligraphyer = new Calligraphyer();
             calligraphyer.Name = "书法家";
-            calligraphyer.Description = "简介";
-            calligraphyer.Id = Guid.NewGuid();
+            calligraphyer.Description="简介";
             ((ObservableCollection<Calligraphyer>)_viewSource.Source).Add(calligraphyer);
+            calligraphyer.Status = EntityBase.Statuses.New;
+            ;CalligrapherDataHelper.Save((ObservableCollection<Calligraphyer>)_viewSource.Source);
         }
 
         public void Save()
         {
             CalligrapherDataHelper.Save((ObservableCollection<Calligraphyer>)_viewSource.Source);
         }
-        public void Clear()
-        {
 
-            CalligrapherDataHelper.DeleteAll((ObservableCollection<Calligraphyer>)_viewSource.Source);
-            _viewSource.Source = CalligrapherDataHelper.Load();
-        }
-        public void Delete(int count)
+        public void Delete()
         {
-           
-            CalligrapherDataHelper.DeleteOne((ObservableCollection<Calligraphyer>)_viewSource.Source,count);
-            _viewSource.Source = CalligrapherDataHelper.Load();
+            CalligrapherDataHelper.Save((ObservableCollection<Calligraphyer>)_viewSource.Source);
         }
     }
 }

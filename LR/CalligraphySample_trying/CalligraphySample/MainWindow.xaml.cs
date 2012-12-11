@@ -30,7 +30,7 @@ namespace CalligraphySample
         {
             CalligrapherViewModel cvm = this.Resources["cvm"] as CalligrapherViewModel;
             cvm.AddCalligrapher();
-            //cvm.Save();
+            cvm.Save();
         }
 
         //private void Button_Click_1(object sender, RoutedEventArgs e)
@@ -51,6 +51,24 @@ namespace CalligraphySample
         {
             CalligrapherViewModel cvm = this.Resources["cvm"] as CalligrapherViewModel;
             cvm.Clear();
+        }
+
+        private void Btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+            int count;
+            if (this.lbx.SelectedItems.Count <= 0) return;
+            else
+            {
+                count = this.lbx.SelectedIndex;
+            }
+            CalligrapherViewModel cvm = this.Resources["cvm"] as CalligrapherViewModel;
+            cvm.Delete(count);
+        }
+
+        private void Btn_Rename_Click(object sender, RoutedEventArgs e)
+        {
+
+            //this.lbx.SelectedItem = "change";
         }
 
         
