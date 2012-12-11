@@ -64,6 +64,11 @@ namespace CalligraphySample.Entities
             }
         }
 
+        public override string ToString()
+        {
+            return _name;
+        }
+
         public Calligraphyer()
         {
             //_id = Guid.NewGuid();

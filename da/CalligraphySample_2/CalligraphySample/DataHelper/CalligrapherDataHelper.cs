@@ -32,26 +32,26 @@ namespace CalligraphySample.DataHelper
         {
             foreach (var c in calligraphyers)
             {
-                if (c.Description.ToString().Trim().Equals("delete"))
-                {
-                    c.Status = EntityBase.Statuses.Delete;
-                }
-                
-                if (c.Status == EntityBase.Statuses.New)
-                {
-                    Insert(c);
-                    c.Status = EntityBase.Statuses.Updated;
-                }
-                else if (c.Status == EntityBase.Statuses.Edit)
-                {
-                    Update(c);
-                    c.Status = EntityBase.Statuses.Updated;
-                }
-                else if (c.Status == EntityBase.Statuses.Delete)
-                {
-                    Delete(c);
-                    c.Status = EntityBase.Statuses.Updated;
-                }
+                Save(c);
+            }
+        }
+
+        public static void Save(Calligraphyer c)
+        {
+            if (c.Status == EntityBase.Statuses.New)
+            {
+                Insert(c);
+                c.Status = EntityBase.Statuses.Updated;
+            }
+            else if (c.Status == EntityBase.Statuses.Edit)
+            {
+                Update(c);
+                c.Status = EntityBase.Statuses.Updated;
+            }
+            else if (c.Status == EntityBase.Statuses.Delete)
+            {
+                Delete(c);
+                //c.Status = EntityBase.Statuses.Updated;
             }
         }
 
@@ -82,7 +82,7 @@ namespace CalligraphySample.DataHelper
             cnn.Close();
         }
 
-        public static void Delete(Calligraphyer c)
+        private static void Delete(Calligraphyer c)
         {
             var cnn = DataHelper.CreateConnection();
             string sql = @"DELETE FROM T_Calligrapher WHERE ID = @ID";

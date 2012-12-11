@@ -27,13 +27,33 @@ namespace CalligraphySample.ViewModel
             set { _viewSource = value; }
         }
 
+        //private static bool NotDelected(EntityBase entityBase)
+        //{
+        //    return entityBase.Status != EntityBase.Statuses.Delete;
+        //}
+
         public CalligrapherViewModel()
         {
             _viewSource = new CollectionViewSource();
             ObservableCollection<Calligraphyer> calligraphyers = CalligrapherDataHelper.Load();
             _viewSource.Source = calligraphyers;
+            //_viewSource.View.CurrentChanged += View_CurrentChanged;
+            
+            //_viewSource.View.Filter = new Predicate<object>((o) => { return ((EntityBase)o).Status != EntityBase.Statuses.Delete; });
             //_viewSource.View.CollectionChanged += View_CollectionChanged;
         }
+
+        //void View_CurrentChanged(object sender, EventArgs e)
+        //{
+        //    if (_viewSource.View.CurrentItem != null)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine(_viewSource.View.CurrentItem);
+        //    }
+        //    else
+        //    {
+        //        System.Diagnostics.Debug.WriteLine("current item null");
+        //    }
+        //}
 
         //void View_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
         //{
@@ -56,9 +76,12 @@ namespace CalligraphySample.ViewModel
         {
             CalligrapherDataHelper.Save((ObservableCollection<Calligraphyer>)_viewSource.Source);
         }
-        public void Delete()
+
+        public void Delete(Calligraphyer c)
         {
-            //CalligrapherDataHelper.Delete((ObservableCollection<Calligraphyer>)_viewSource.Source);
+            ((ObservableCollection<Calligraphyer>)_viewSource.Source).Remove(c);
+            c.Status = EntityBase.Statuses.Delete;
+            CalligrapherDataHelper.Save(c);
         }
     }
 }

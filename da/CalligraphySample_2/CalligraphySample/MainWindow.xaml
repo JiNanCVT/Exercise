@@ -6,7 +6,9 @@
     <Window.Resources>
         <vm:CalligrapherViewModel x:Key="cvm"/>
         <DataTemplate x:Key="ListBoxTemplate">
-            <TextBox Text="{Binding Name}" Width="271" Height="20"/>
+            <StackPanel>
+                <TextBox Text="{Binding Name}"   Height="20"  Margin="5,5,5,5" />
+            </StackPanel>
         </DataTemplate>
     </Window.Resources>
     <Grid DataContext="{Binding Source={StaticResource cvm}, Path=ViewSource}">
@@ -21,8 +23,27 @@
         <Button Content="Add" Grid.Row="0" Grid.ColumnSpan="2" Width="50" HorizontalAlignment="Left" Name="Btn_Add" Click="Btn_Add_Click"/>
         <Button Content="Save" Grid.Row="0" Margin="68,0,174,0" Click="Button_Click_1"/>
         <Button Content="Delete" Grid.Row="0" Margin="144,0,100,0" Click="Btn_Delete_Click" />
-        <ListBox Name="lbx_delete" Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" ItemTemplate="{StaticResource ListBoxTemplate}" >
-            
+        <ListBox Name="lbx_delete" Grid.Column="0"  Grid.Row="1" ItemsSource="{Binding}" ItemTemplate="{StaticResource ListBoxTemplate}"  >
+            <ListBox.ItemContainerStyle>
+                <Style TargetType="{x:Type ListBoxItem}">
+                    <Style.Triggers>
+                        <Trigger Property="IsKeyboardFocusWithin" Value="True">
+                            <Trigger.EnterActions>
+                                <BeginStoryboard x:Name="SetSelected">
+                                    <Storyboard>
+                                        <BooleanAnimationUsingKeyFrames Storyboard.TargetProperty="IsSelected">
+                                            <DiscreteBooleanKeyFrame KeyTime="0:00" Value="True" />
+                                        </BooleanAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <!--<Trigger.ExitActions>
+                                <RemoveStoryboard BeginStoryboardName="SetSelected"/>
+                            </Trigger.ExitActions>-->
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </ListBox.ItemContainerStyle>
         </ListBox>
         <TextBox  Name="tbx_des" Grid.Column="1" Grid.Row="1" Text="{Binding Path=Description}"/>
     </Grid>

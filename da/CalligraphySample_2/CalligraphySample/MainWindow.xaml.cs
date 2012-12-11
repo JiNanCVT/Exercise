@@ -1,4 +1,5 @@
-﻿using CalligraphySample.ViewModel;
+﻿using CalligraphySample.Entities;
+using CalligraphySample.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,11 +45,13 @@ namespace CalligraphySample
        
         private void Btn_Delete_Click(object sender, RoutedEventArgs e)
         {
-            this.tbx_des.Text = "delete";
+            //this.tbx_des.Text = "delete";
             //MessageBox.Show(this.tbx_des.Text+this.tbx_des.Text.Length.ToString());
             CalligrapherViewModel cvm = this.Resources["cvm"] as CalligrapherViewModel;
+            Calligraphyer c = cvm.ViewSource.View.CurrentItem as Calligraphyer;
+            
             //cvm.AddCalligrapher();
-            cvm.Save();
+            cvm.Delete(c);
             //this.lbx_delete.ItemsSource.
         }
 

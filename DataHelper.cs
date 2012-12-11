@@ -10,7 +10,7 @@ namespace CalligraphySample.DataHelper
     {
         public static SqlConnection CreateConnection()
         {
-            return new SqlConnection(@"Data Source=JUSTAPC\SQLDEV;Initial Catalog=CalligraphyTeaching;Persist Security Info=True;User ID=sa;Password=zuolun");
+            return new SqlConnection(@"Data Source=da\sqlexpress;Initial Catalog=Calligrapher;Integrated Security=True");
         }
     }
 }
